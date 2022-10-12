@@ -1,0 +1,21 @@
+- callback adalaha fungsi yang menjadi parameter
+- higher order function adalah fungsi yang menerima fungsi lain menjadi parameter
+- built in function fetch() digunakan untuk mengambil data api
+- constructor promise digunakan untuk mengetahui jika data api dapat diambil atau tidak
+- resolve adalah sebuah status yang muncul ketika fetch berhasil mengambil api
+- reject adalah sebuah status yang muncul ketika fetch tidak berhasil mengambil api
+- method then mengembalikan promise yang terisi fullfiled 
+  atau rejected, jika terisi fullfiled berarti api dapat diambil, 
+  tetapi jika tidak dapat diambil maka akan terisi rejected
+- method catch sama seperti then tetapi hanya mengambil rejected
+- method finally akan dijalankan ketika promise berstatus fullfield ataupun rejected
+- promise all sama seperti promise tapi sekaligus
+- method then dan catch tidak dapat di tulis didalam async. 
+  untuk menangani error dapat digunakan block try dan catch
+- api?
+- rest api?
+- blocking?
+- asynchronous?
+- synchronous?
+- single thread?
+- multi thread?

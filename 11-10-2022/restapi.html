@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            let get_api = fetch("https://api.weatherbit.io/v2.0/current?lat=-6.200000&lon=106.816666&key=d2f2876b7e5e48f39aa04701b186c5ee")
+
+            console.log(get_api)
+            get_api
+                .then(res => res.json())
+                .then(res => console.log(res.data[0].city_name))
+
+            // let tes = true
+            // let prms = new Promise((resolve, reject) => {
+            //     if (tes) {
+            //         resolve("Berhasil")
+            //     }
+            //     else {
+            //         reject("Gagal")
+            //     }
+            // })
+
+
+            // prms
+            //     .then(res => console.log(res))
+            //     .catch(err => console.err(err))
+            //     .finally(console.log("ok"))
+        </script>
+    </body>
+</html>

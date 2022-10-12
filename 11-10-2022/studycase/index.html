@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather</title>
+        <link rel="stylesheet" href="style.css"></link>
+    </head>
+    <body>
+        <h1 id="test"></h1>
+        <p id="p1"></p>
+        <hr/>
+        <p id="p2">Keep Save</p>
+        <script>
+            var heading = document.getElementById("test")
+            var paragraph1 = document.getElementById("p1")
+
+            var get_api = fetch("https://api.weatherbit.io/v2.0/current?lat=-6.200000&lon=106.816666&key=d2f2876b7e5e48f39aa04701b186c5ee&lang=id")
+            var database = get_api.then(res => res.json())
+            database.then(res => {
+                heading.innerHTML = res.data[0].city_name
+                paragraph1.innerHTML = res.data[0].weather.description
+            })
+        </script>
+    </body>
+</html>
