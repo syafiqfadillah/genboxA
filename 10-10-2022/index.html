@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bank</title>
+		<script type="text/javascript">
+			var saldo = 0;
+			var loop = "Y";
+
+			while (loop == "Y") {
+				var a = alert("Selamat Datang!");
+				var b = prompt("Pilih : \n 1. Cek Saldo \n 2. Setor \n 3. Tarik");
+
+				switch (b) {
+					case "1":
+						alert("Saldo Anda : " + saldo);
+						break;
+					case "2":
+						var nominal = parseInt(prompt("Masukkan Nominal : "));
+						saldo += nominal
+						alert("Setor Berhasil!");
+						break;
+					case "3":
+						var tarik = parseInt(prompt("Masukkan Nominal : "));
+						if (tarik > saldo) {
+							alert("Saldo Tidak Cukup!");
+						}
+						else {
+							saldo -= nominal
+						}
+						break;
+					default:
+						alert("Tidak Ada Pilihannya");
+						break;
+					}
+
+					loop = prompt("Lanjut? Y/N").toUpperCase();
+				}
+		</script>>
+	</head>
+	<body>
+	</body>
+</html>
