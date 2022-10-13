@@ -1,7 +1,7 @@
 var readline = require("./node_modules/readline-sync")
-var attack = require("./attack.js")
+var Attack = require("./attack.js")
 
-class Person extends attack {
+class Person extends Attack {
 	constructor() {
 		super()
 
@@ -10,8 +10,13 @@ class Person extends attack {
 		this.level = 1
 	}
 
+	diserang() {
+		this.health -= 20
+		console.log(`Kamu diserang! Darah mu tersisa ${this.health}`)
+	}
+
 	checkExp() {
-		if ((this.exp % 100) == 0) {
+		if ((this.exp > 0) && (this.exp % 100) == 0) {
 			this.level += 1
 			console.log("LEVEL UP!")
 		}
