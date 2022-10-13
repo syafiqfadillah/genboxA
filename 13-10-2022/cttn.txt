@@ -1,0 +1,5 @@
+- terdapat 3 jenis module, 
+  pertama local module, module yang dibuat sendiri
+  kedua core module, module yang sudah tersedia ketika mendownload node jenis
+  ketiga third party library, yang dibuat oleh orang lain dan tersedia di npm
+- npm init digunakan untuk dapat mendownload module yg terdapat di npm
