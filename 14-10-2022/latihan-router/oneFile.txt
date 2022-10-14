@@ -1,0 +1,25 @@
+const express = require("express")
+const cors = require("cors")
+const app = express()
+const port = 4000
+
+const router = express.Router() apa bedanya dengan const app?
+
+app.use(cors())
+
+router.get("/data", (req, res) => {
+    res.status(200).json({
+        message: "Data Berhasil diGet!",
+        data: {
+            nama: "test",
+            umur: 18,
+            hobi: "tidur"
+        }
+    })
+})
+
+app.use("/", router)
+
+app.listen(port, () => {
+    console.log("Server Running")
+})

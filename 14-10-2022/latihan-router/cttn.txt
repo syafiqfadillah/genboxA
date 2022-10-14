@@ -1,0 +1,18 @@
+middleware? fungsi yang menerima parameter res, req, next
+res? klo menerima respon dari server kenapa bisa res.send?
+req?
+next? untuk melanjutkan ke fungsi middleware selanjutnya
+router? menerima dan mengelola res dan req
+method put/patch? update/edit data dari server
+method get? mengambil data dari server
+method post? mengirim data baru ke server
+method delete? menghapus data dari sever
+get express? mengambil data dari server dengan path secara spesifik
+use express? sama seperti get pada express tapi tidak mengambil path secara spesifik dan harus menggunakan fungsi next()
+endpoint? nilai setelah key di api. 
+          contoh : http://www.localhost:4000/users/v1/data. 
+                   /users/v1/data disebut endpoint
+entrypoint? file utama. contoh : index.js
+folder controllers? menyimpan callback routernya
+folder models? menyimpan database
+folder routes? menyimpan router
