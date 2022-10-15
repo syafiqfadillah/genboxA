@@ -1,6 +1,6 @@
 middleware? fungsi yang menerima parameter res, req, next
-res? klo menerima respon dari server kenapa bisa res.send?
-req?
+res? menerima respon dari server
+req? menerima request dari user ke server
 next? untuk melanjutkan ke fungsi middleware selanjutnya
 router? menerima dan mengelola res dan req
 method put/patch? update/edit data dari server
