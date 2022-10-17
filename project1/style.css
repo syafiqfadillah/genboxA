@@ -127,11 +127,6 @@ h2 {
 	height: auto;
 }
 
-input[name="r"] {
-	position: absolute;
-	visibility: hidden;
-}
-
 /*#r1:checked ~ .s1{
   margin-left: 0;
 }
