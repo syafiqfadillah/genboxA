@@ -3,7 +3,7 @@ const cors = require("cors")
 const app = express()
 const port = 4000
 
-const router = express.Router() apa bedanya dengan const app?
+const router = express.Router()
 
 app.use(cors())
 
