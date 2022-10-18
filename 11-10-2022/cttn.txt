@@ -12,6 +12,7 @@
 - promise all sama seperti promise tapi sekaligus
 - method then dan catch tidak dapat di tulis didalam async. 
   untuk menangani error dapat digunakan block try dan catch
+- async dan await digunakan ketika membuat fungsi yang menerima parameter callback
 - api?
 - rest api?
 - blocking?
