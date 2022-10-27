@@ -1,0 +1,38 @@
+.Card {
+    width: 310px;
+    height: 290px;
+    border-radius: 5px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #C4C4C4;
+}
+
+.Content {
+    width: 100%;
+    margin: 3px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+}
+
+.Header {
+    margin-bottom: 0;
+    font-size: 30px;
+}
+
+.Price {
+    font-size: 10px
+}
+
+.Buy {
+    width: 100px;
+    height: 30px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: #5097FF;
+}

@@ -2,8 +2,7 @@ const express = require("express")
 const {body} = require("express-validator")
 const router = express.Router()
 
-// const {get, datas, post, edit, del} = require("../controllers/data")
-const {datas, post, get, edit} = require("../controllers/data")
+const {get, datas, post, edit, del} = require("../controllers/data")
 
 router.get("/get", datas)
 
@@ -19,6 +18,6 @@ router.put("/put/:getId", [
     body("tanggal_lahir").isLength({min: 6}).withMessage("Tanggal Terlalu Pendek"),
 ], edit)
 
-// router.delete("/del/:getId", del)
+router.delete("/del/:getId", del)
 
 module.exports = router

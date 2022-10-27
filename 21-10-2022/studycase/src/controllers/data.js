@@ -50,6 +50,7 @@ const get = (req, res) => {
 }
 
 const edit = (req, res, next) => {
+    const id = req.params.getId
     const errors = validationResult(req)
     
     if (!errors.isEmpty()) {
@@ -64,7 +65,6 @@ const edit = (req, res, next) => {
         tanggal_lahir: req.body.tanggal_lahir,
     }
 
-    const id = req.params.getId
     const command = `UPDATE users SET nama='${d.nama}' WHERE id='${id}'`
     db.query(command, (err, result) => {
         res.status(200).json({
@@ -74,26 +74,17 @@ const edit = (req, res, next) => {
     })
 }
 
-// const del = (req, res, next) => {
-//     const blogId = req.params.getId
-//     id.findById(blogId)
-//         .then(respon => {
-//             if (!respon) {
-//                 const err = new Error("ID Tidak Ditemukan")
-//                 err.status(422)
-//                 throw err
-//             }
+const del = (req, res, next) => {
+    const blogId = req.params.getId
+    const command = `DELETE FROM users WHERE id="${blogId}"`
 
-//             return id.findByIdAndDelete(blogId)
-//         })
-//         .then(respon => {
-//             res.status(200).json({
-//                 message: "ID Berhasil Dihapus",
-//                 data: respon
-//             })
-//         })
-//         .catch(err => next(err))
-// }
+    db.query(command, (err, result) => {
+        res.status(200).json({
+            message: "Data Berhasil Di DELETE",
+            data: d
+        })
+    })
 
-// module.exports = {get, datas, post, edit, del}
-module.exports = {datas, post, get, edit}
+}
+
+module.exports = {get, datas, post, edit, del}

@@ -1,0 +1,10 @@
+.Nama {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 20px;
+    border: 1px solid blue;
+    width: 200px;
+    margin: 10px;
+  }

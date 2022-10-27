@@ -1,0 +1,2 @@
+jsx?
+spa? single package application

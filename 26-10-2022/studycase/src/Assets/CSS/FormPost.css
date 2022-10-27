@@ -1,0 +1,11 @@
+.form-parent {
+    display: none;
+}
+
+.form {
+    width: 300px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
