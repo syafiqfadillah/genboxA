@@ -1,5 +1,5 @@
 function delId(url) {
-    const newUrl = `${url}/${document.getElementsByClassName("id")[0].value}`
+    const newUrl = `${url}/${document.getElementsByClassName("id")[2].value}`
 
     const data = {
         method: "DELETE", 

@@ -17,7 +17,7 @@ const Methods = () => {
             <div className="buttons">
                 <button className="get" onClick={() => show("form-id")}>Get</button>
                 <button className="post" onClick={() => show("form-parent")}>Post</button>
-                {/* <button className="put" onClick={() => show("form-edit")}>Put</button> */}
+                <button className="put" onClick={() => show("form-edit")}>Put</button>
                 <button className="del" onClick={() => show("form-del")}>Delete</button>
             </div>
         </div>
