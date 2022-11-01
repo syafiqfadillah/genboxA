@@ -22,18 +22,6 @@
     flex-wrap: wrap;
 }
 
-.Buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.Contents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 img {
     width: 30px;
     height: 30px;

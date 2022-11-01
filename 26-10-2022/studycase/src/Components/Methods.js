@@ -1,5 +1,5 @@
 function show(className) {
-    const lst = document.getElementsByClassName('Wrapper')[0].childNodes
+    const lst = document.getElementsByClassName('Wrapper2')[0].childNodes
 
     for (let i=0; i<lst.length; i++) {
         if (i != lst.length-1) {

@@ -1,0 +1,44 @@
+.App {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Buttons {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.Choices {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Forms {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+}
+
+.Sections {
+  display: flex;
+  flex-direction: column;
+}
+
+#second {
+  display: none;
+}
+
+table, th, td {
+  border: 1px solid black;
+}

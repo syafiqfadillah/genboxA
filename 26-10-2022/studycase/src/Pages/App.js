@@ -21,10 +21,17 @@ function App() {
 
   return (
     <div className="App">
-        {/* <Methods /> */}
         <div className="Wrapper">
-          {/* <FormPost url={url}/> */}
-          {/* <FormEdit url={url}/> */}
+          <Methods />
+          <div className="Wrapper2">
+            <FormPost url={url}/>
+            <FormEdit url={url}/>
+            <FormDel url={url}/>
+            <FormID url={url}/>
+          </div>
+          <Output url={url}/>
+        </div>
+        <div className="Wrapper1">
           <OutputALL url={url}/>
         </div>
     </div>

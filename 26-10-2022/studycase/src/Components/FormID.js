@@ -1,5 +1,5 @@
 function getId(url) {
-    fetch(`${url}/${document.getElementsByClassName("id")[0].value}`)
+    fetch(`${url}/${document.getElementsByClassName("id")[2].value}`)
         .then(res => res.json())
         .then(res => {
             console.log(res)

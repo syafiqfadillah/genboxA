@@ -11,10 +11,6 @@ function Card(props) {
                 </ul>
                 <img src={"https://book0101.herokuapp.com/" + props.url} />
             </div>
-            <div className="Buttons">
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
         </div>
     )
 }
