@@ -11,50 +11,15 @@ const router = express.Router()
 
 const port = 8000
 
-app.use(cors())
-app.use(bodyParser.json())
-app.use(multer().single('none'))
-
-// for riwayat table
-function postRiwayat(req, res) {
-    const errors = validationResult(req)
-
-    if (!errors.isEmpty()) {
-        const err = new Error("Invalid!")
-        err.errorStatus = 400
-        err.data = errors.array()
-        throw err
-    }
-
-    let d = {
-        tanggal: req.body.tanggal,
-        jenis: req.body.jenis,
-        nominal: req.body.nominal
-    }
-
-    const command = `INSERT INTO riwayat (tanggal, jenis, nominal)
-                     VALUE ('${d.tanggal}', '${d.jenis}', '${d.nominal}')`
+function putSaldo(req, res) {
+    const command = `UPDATE saldo SET nominal='${req.body.nominal}' WHERE id='1'`
 
     db.query(command, (err, result) => {
-        res.status(200).json({
-            message: "Data Berhasil di POST!",
-            data: d
-        })
+        if (err) throw err
+        console.log("Data Berhasil Diedit : " + result.affectedRows)
     })
 }
 
-function getRiwayat(req, res) {
-    const command = `SELECT * FROM riwayat`
-
-    db.query(command, (err, result) => {
-        res.status(200).json({
-            message: "Data Berhasil di GET!",
-            data: result
-        })
-    })
-}
-
-// for saldo table
 function getSaldo(req, res) {
     const command = `SELECT * FROM saldo`
 
@@ -66,7 +31,7 @@ function getSaldo(req, res) {
     })
 }
 
-function postSaldo(req, res) {
+function postHistory(req, res) {
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
@@ -76,38 +41,42 @@ function postSaldo(req, res) {
         throw err
     }
 
-    const command = `INSERT INTO saldo (nominal)
-                     VALUE ('${req.body.nominal}')`
+    const data = {
+        tanggal: req.body.tanggal,
+        jenis: req.body.jenis,
+        nominal: req.body.nominal
+    }
+
+    const command = `INSERT INTO riwayat (tanggal, jenis, nominal)
+                     VALUE ('${data.tanggal}', '${data.jenis}', '${data.nominal}')`
 
     db.query(command, (err, result) => {
         res.status(200).json({
-            message: "Data Berhasil di POST!",
-            data: req.body.nominal
+            message: "History Bertambah!",
+            data: data
         })
     })
 }
 
-function putSaldo(req, res) {
-    const command = `UPDATE saldo SET nominal='${req.body.nominal}' WHERE id='1'`
+function getHistory(req, res) {
+    const command = `SELECT * FROM riwayat`
 
     db.query(command, (err, result) => {
-        if (err) throw err
-        console.log("Data Berhasil Diedit : " + result.affectedRows)
+        res.status(200).json({
+            message: "Data Berhasil di GET!",
+            data: result
+        })
     })
 }
 
-// router handler
+router.put("/putSaldo", putSaldo)
 router.get("/getSaldo", getSaldo)
-router.post("/postSaldo", postSaldo)
-router.put("/putSaldo/:id", putSaldo)
+router.post("/postHistory", postHistory)
+router.get("/getHistory", getHistory)
 
-router.post("/post", [
-    body("tanggal").isLength({min: 1}).withMessage("Tanggal Terlalu Pendek!"),
-    body("jenis").isLength({min: 1}).withMessage("Jenis Terlalu Pendek!"),
-    body("nominal").isLength({min: 1}).withMessage("Nominal Terlalu Pendek!")
-], postRiwayat)
-
-router.get("/get", getRiwayat)
+app.use(cors())
+app.use(bodyParser.json())
+app.use(multer().single('none'))
 
 app.use("/", router)
 

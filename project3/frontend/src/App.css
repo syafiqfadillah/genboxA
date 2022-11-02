@@ -1,42 +1,62 @@
-.App {
-  height: 400px;
+.App, .Heading, .Wrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
 
-.Buttons {
-  margin-bottom: 20px;
+.Wrapper {
+  height: 100%;
+  background-color: aqua;
+}
+
+.Heading {
+  padding: 10px
+}
+
+.Pulsa {
+  font-size: 3em;
+  color: white
+}
+
+.Saldo {
+  margin-top: 2px;
+}
+
+.Row {
   display: flex;
   flex-direction: row;
 }
 
-.Choices {
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.Forms {
-  width: 100%;
+.Options {
+  width: 10%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.Form {
+.Inputs {
+  width: 10%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.FormTopUp {
   display: flex;
   flex-direction: column;
 }
 
-.Sections {
+.FormJual {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 }
 
-#second {
-  display: none;
+.Row {
+  margin-top: 50px;
 }
 
 table, th, td {

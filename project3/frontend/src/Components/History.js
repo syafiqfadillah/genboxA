@@ -1,9 +1,8 @@
-import Card from "./Card.js";
+import Card from "./Card.js"
 
 function History(props) {
     return (
         <table className="History">
-
             <thead>
                 <tr>
                     <th>Tanggal</th>
@@ -12,8 +11,8 @@ function History(props) {
                 </tr>
             </thead>
             <tbody>
-                {props.datas.map(element => (
-                    <Card tanggal={element.tanggal} jenis={element.jenis} nominal={element.nominal}/>
+                {props.datas.map((element, i) => (
+                    <Card key={i} tanggal={element.tanggal} jenis={element.jenis} nominal={element.nominal}/>
                 ))}
             </tbody>
         </table>

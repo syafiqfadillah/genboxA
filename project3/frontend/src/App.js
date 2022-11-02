@@ -1,76 +1,137 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from "react";
 
-import Choices from "./Components/Choices.js";
-import TopUp from "./Components/TopUp.js";
-import Jual from "./Components/Jual.js";
 import History from "./Components/History.js";
+import FormTopUp from "./Components/FormTopUp.js";
+import FormJual from "./Components/FormJual.js";
 
 import './App.css';
 
 function App() {
-  // get all riwayat
-  const [datas, setDatas] = useState([])
-
-  useEffect(() => {
-    fetch("http://localhost:8000/get")
-      .then(res => res.json())
-      .then(res => {
-        setDatas(res.data)
-      })
-  }, [setDatas])
-
-  // get saldo
+  const [bool, setBool] = useState(false)
+  const [getHistory, setGetHistory] = useState([])
+  const [options, setOptions] = useState(true)
   const [saldo, setSaldo] = useState(0)
+  const [nominal, setNominal] = useState(0)
+  const [tanggal, setTanggal] = useState(0)
+  const [show, setShow] = useState(false)
+  const [showOptions, setShowOptions] = useState(null)
 
+  // getSaldo
   useEffect(() => {
     fetch("http://localhost:8000/getSaldo")
-      .then(res => res.json())
-      .then(res => {
-        setSaldo(parseInt(res.data[0].nominal))
-      })
-  }, [setSaldo])
-
-  // put saldo
-  const [psaldo, setPsaldo] = useState(0)
-
-  const data = new FormData()
-  data.append("nominal", saldo + parseInt(psaldo))
-
-  console.log(saldo, parseInt(psaldo))
-
-  fetch("http://localhost:8000/putSaldo/1", {
-    method: "PUT",
-    body: data
-  })
     .then(res => res.json())
+    .then(res => {
+      setSaldo(parseInt(res.data[0].nominal))
+    })
+  })
 
-  function Show() {
-    document.getElementsByClassName("Sections")[0].style.display = "flex"
-    document.getElementsByClassName("Sections")[1].style.display = "none"
+  // getHistory
+  useEffect(() => {
+    fetch("http://localhost:8000/getHistory")
+    .then(res => res.json())
+    .then(res =>
+      setGetHistory(res.data)
+    )
+  })
+
+  function putJual() {
+    let convert = saldo - parseInt(nominal)
+
+    const data = new FormData()
+    data.append("tanggal", tanggal)
+    data.append("nominal", convert)
+
+    fetch("http://localhost:8000/putSaldo", {
+      method: "PUT",
+      body: data
+    })
+      .then(res => res.json())
   }
 
-  function Show1() {
-    document.getElementsByClassName("Sections")[0].style.display = "none"
-    document.getElementsByClassName("Sections")[1].style.display = "flex"
+  function putSaldo() {
+    let convert = parseInt(nominal) + saldo
+
+    const data = new FormData()
+    data.append("tanggal", tanggal)
+    data.append("nominal", convert)
+
+    fetch("http://localhost:8000/putSaldo", {
+      method: "PUT",
+      body: data
+    })
+      .then(res => res.json())
+  }
+
+  function postHistory() {
+    const data = new FormData()
+    data.append("tanggal", tanggal)
+    data.append("jenis", options)
+    data.append("nominal", nominal)
+
+    fetch("http://localhost:8000/postHistory", {
+      method: "POST",
+      body: data
+    })
+      .then(res => res.json())
+  }
+
+  function jualMethod(e) {
+    e.preventDefault()
+
+    if (saldo > parseInt(nominal)) {
+      putJual()
+      postHistory()
+    }
+    else {
+      alert("Saldo Tidak Cukup!")
+    }
+  }
+
+  function topUpMethod(e) {
+    e.preventDefault()
+
+    putSaldo()
+    postHistory()
+  }
+
+  function changeState(state) {
+    setShowOptions(state)
+    state ? setOptions("Jual") : setOptions("Top-Up") 
   }
 
   return (
     <div className="App">
-      <h1>Pulsa</h1>
-      <h2>{saldo}</h2>
-      <div className='Buttons'>
-        <button onClick={Show}>Input</button>
-        <button onClick={Show1}>Riwayat</button>
-      </div>
-      <div className='Sections'>
-        <Choices />
-        <div className='Forms'>
-          <TopUp nominal={setPsaldo} />
-          <Jual />
+      <div className="Wrapper">
+        <div className="Heading">
+          <h1 className="Pulsa">Pulsa</h1>
+          <h2 className="Saldo">Saldo : {saldo}</h2>
         </div>
-      </div>
-      <div className='Sections'>
-        <History datas={datas}/>
+        <div className="Inputs">
+          <button onClick={() => setShow(true)}>Input</button>
+          <button onClick={() => setShow(false)}>Riwayat</button>
+        </div>
+        {show ? 
+          (<>
+            <div className="Options">
+              <button onClick={() => changeState(false)}>Top-Up</button>
+              <button onClick={() => changeState(true)}>Jual</button>
+            </div>
+            <div>
+              {showOptions ?
+                (<div className="Row">
+                  <FormJual method={jualMethod} tanggal={setTanggal} nominal={setNominal}/>
+                </div>)
+              :
+                (<div className="Row">
+                  <FormTopUp method={topUpMethod} tanggal={setTanggal} nominal={setNominal}/>
+                </div>)
+              }
+            </div>
+          </>)  
+        : 
+          (<div className="Row">
+            <History datas={getHistory}/>
+          </div>)}
       </div>
     </div>
   );

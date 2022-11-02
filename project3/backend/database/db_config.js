@@ -4,7 +4,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "pulsa"
+    database: "genbox_pulsa"
 })
 
 db.connect(err => {
