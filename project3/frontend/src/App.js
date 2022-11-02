@@ -106,14 +106,14 @@ function App() {
           <h2 className="Saldo">Saldo : {saldo}</h2>
         </div>
         <div className="Inputs">
-          <button onClick={() => setShow(true)}>Input</button>
-          <button onClick={() => setShow(false)}>Riwayat</button>
+          <button className="button" onClick={() => setShow(true)}>Input</button>
+          <button className="button" onClick={() => setShow(false)}>Riwayat</button>
         </div>
         {show ? 
           (<>
             <div className="Options">
-              <button onClick={() => changeState(false)}>Top-Up</button>
-              <button onClick={() => changeState(true)}>Jual</button>
+              <button className="button" onClick={() => changeState(false)}>Top-Up</button>
+              <button className="button" onClick={() => changeState(true)}>Jual</button>
             </div>
             <div>
               {showOptions ?

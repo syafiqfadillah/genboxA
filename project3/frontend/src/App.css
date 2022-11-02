@@ -1,18 +1,23 @@
+.App {
+  height : 900px;
+}
+
 .App, .Heading, .Wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
 
 .Wrapper {
   height: 100%;
-  background-color: aqua;
 }
 
 .Heading {
-  padding: 10px
+  width: 20%;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: black;
 }
 
 .Pulsa {
@@ -30,35 +35,54 @@
 }
 
 .Options {
-  width: 10%;
+  width: 20%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
 .Inputs {
-  width: 10%;
+  margin-top: 50px;
+  width: 20%;
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
+}
+
+.FormJual, .FormTopUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: aqua;
+  border-radius: 10px;
 }
 
 .FormTopUp {
-  display: flex;
-  flex-direction: column;
+  height: 150px;
 }
 
+
 .FormJual {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  height: 200px;
 }
 
 .Row {
   margin-top: 50px;
 }
 
+table {
+  margin-bottom: 50px;
+}
 table, th, td {
+  padding: 5px;
   border: 1px solid black;
+  border-radius: 5px;
+  background-color: aqua;
+}
+
+.button {
+  width: 100px;
+  height: 20px;
 }
