@@ -7,7 +7,6 @@ import FormJual from "./Components/FormJual.js";
 import './App.css';
 
 function App() {
-  const [bool, setBool] = useState(false)
   const [getHistory, setGetHistory] = useState([])
   const [options, setOptions] = useState(true)
   const [saldo, setSaldo] = useState(0)
